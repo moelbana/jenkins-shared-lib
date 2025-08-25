@@ -1,9 +1,9 @@
 def build() {
-    echo "Running Maven build..."
-    sh "mvn clean package -DskipTests"
+    def mvnHome = tool name: 'mvn-3-5-4', type: 'hudson.tasks.Maven$MavenInstallation'
+    sh "${mvnHome}/bin/mvn clean package -DskipTests"
 }
 
 def test() {
-    echo "Running Maven tests..."
-    sh "mvn test"
+    def mvnHome = tool name: 'mvn-3-5-4', type: 'hudson.tasks.Maven$MavenInstallation'
+    sh "${mvnHome}/bin/mvn test"
 }
